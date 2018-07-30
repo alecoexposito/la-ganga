@@ -1,0 +1,7 @@
+{
+  "name": "la-ganga",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

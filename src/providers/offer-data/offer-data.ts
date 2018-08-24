@@ -17,7 +17,7 @@ export class OfferDataProvider {
     console.log('Hello OfferDataProvider Provider');
   }
 
-  getOffers() {
+  getOffers(): any {
     return new Promise(resolve => {
       this.http.get('assets/data/ofertas.json').subscribe(data => {
         resolve(data);

@@ -56,8 +56,10 @@ export class HomePage {
         if(this.offersFull != undefined) {
           this.offers = this.offersFull;
         }else {
-          this.offers = data.offers;
-          this.offersFull = data.offers;
+          if(data.offers != undefined) {
+            this.offers = data.offers;
+            this.offersFull = data.offers;
+          }
         }
         console.log(this.offers);
       });

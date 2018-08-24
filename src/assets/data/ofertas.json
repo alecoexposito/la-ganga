@@ -1,0 +1,28 @@
+{
+  "offers": [{
+    "title": "4to Jugo gratis",
+    "description": "Esta es una descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta",
+    "image": "assets/imgs/3.jpg",
+    "business": {
+      "name": "Juanky's Pan",
+      "description": "Juanky's Pan es un negocio especializado en la elaboración de hamburguesas, pizzas, panes y otras muchas ofertas para el deleite de todos los que lo visitan."
+    },
+    "categoria": {
+      "id": 1,
+      "name": "Comida"
+    }
+  }, {
+    "title": "Manos libres de regalo",
+    "description": "Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta. Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta. Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta. Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta. Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta. Segunda descripción larga de la oferta, en esta descripción se explicará todo lo necesario para explicar la oferta",
+    "image": "assets/imgs/6.jpg",
+    "business": {
+      "name": "Ingenius",
+      "description": "Ingenius se especializa en la reparación de equipos electrónicos y en el desarrollo de software."
+    },
+    "categoria": {
+      "id": 2,
+      "name": "Teconología"
+    }
+  }
+  ]
+}

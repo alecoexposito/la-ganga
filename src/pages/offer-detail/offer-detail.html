@@ -1,0 +1,39 @@
+<!--
+  Generated template for the OfferDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar no-margin>
+    <ion-title>Oferta</ion-title>
+  </ion-navbar>
+  <!--<ion-segment small>-->
+    <!--<ion-segment-button><ion-icon name="bookmark" start></ion-icon> Reservar</ion-segment-button>-->
+    <!--<ion-segment-button><ion-icon name="checkmark"></ion-icon> Consumir</ion-segment-button>-->
+  <!--</ion-segmet>-->
+  <ion-toolbar no-margin>
+    <ion-buttons start>
+      <button ion-button color="primary" block small>
+        <ion-icon name="bookmark"></ion-icon>&nbsp; Reservar
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button color="primary" block small>
+        <ion-icon name="checkmark"></ion-icon>&nbsp; Consumir
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img [src]="offer.image" />
+  <h4>{{ offer.business.name }}</h4>
+  <h6>{{ offer.title }}</h6>
+  <p>{{ offer.description }}</p>
+  <ion-item-divider></ion-item-divider>
+  <h6>Sobre el negocio</h6>
+  <p>{{ offer.business.description }}</p>
+</ion-content>

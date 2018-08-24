@@ -4,7 +4,6 @@ import { MiscPage } from './misc';
 
 @NgModule({
   declarations: [
-    MiscPage,
   ],
   imports: [
     IonicPageModule.forChild(MiscPage),

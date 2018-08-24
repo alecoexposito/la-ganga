@@ -4,7 +4,6 @@ import { QrActionsPage } from './qr-actions';
 
 @NgModule({
   declarations: [
-    QrActionsPage,
   ],
   imports: [
     IonicPageModule.forChild(QrActionsPage),

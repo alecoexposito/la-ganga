@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
 import {OfferDataProvider} from "../../providers/offer-data/offer-data";
 import {OfferDetailPage} from "../offer-detail/offer-detail";
-import Parse from 'parse';
 import {Storage} from '@ionic/storage';
+import {Network} from "@ionic-native/network";
 
 @Component({
   selector: 'page-home',
@@ -18,7 +18,7 @@ export class HomePage {
   offers: any;
   offersFull: any;
 
-  constructor(public navCtrl: NavController, public offerData: OfferDataProvider, public platform: Platform, public storage: Storage) {
+  constructor(public navCtrl: NavController, public offerData: OfferDataProvider, public platform: Platform, public storage: Storage, private network: Network) {
     this.initializeOffers();
     this.storage.ready().then(() => {
       console.log("storage is ready");
@@ -65,12 +65,18 @@ export class HomePage {
     return this.categories;
   }
 
+  async loadOffersFromServer() {
+    console.log("network type: ", this.network.type);
+    this.offers = await this.offerData.getOffers();
+    this.offersFull = this.offers;
+    this.storage.set("offers", this.offers);
+  }
+
   async initializeOffers() {
     if (this.offersFull != undefined) {
       this.offers = this.offersFull;
     } else {
-      this.offers = await this.offerData.getOffers();
-      this.offersFull = this.offers;
+      this.loadOffersFromServer();
     }
 
 

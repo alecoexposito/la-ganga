@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import {Network} from "@ionic-native/network";
 /**
  * Generated class for the MapPage page.
  *
@@ -15,17 +16,17 @@ import { Storage } from '@ionic/storage';
 })
 export class MapPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public toastCtrl: ToastController, private network: Network) {
     this.storage.get("testingKey").then((name) => {
       console.log(name);
     });
     this.storage.get("testingKeyArray").then((testArray) => {
       console.log(testArray);
     });
-    // toastCtrl.create({
-    //   message: 'valor de testing guardado: ' + this.storage.get("testingKey"),
-    //   duration: 5000
-    // }).present();
+    toastCtrl.create({
+      message: 'network: ' + network.type + "--",
+      duration: 5000
+    }).present();
   }
 
   ionViewDidLoad() {

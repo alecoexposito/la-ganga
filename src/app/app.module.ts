@@ -21,6 +21,7 @@ import {ProfilePage} from "../pages/profile/profile";
 import {NotificationsPage} from "../pages/notifications/notifications";
 import {FidelizationPage} from "../pages/fidelization/fidelization";
 import {IonicStorageModule} from "@ionic/storage";
+import {Network} from "@ionic-native/network";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {IonicStorageModule} from "@ionic/storage";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    OfferDataProvider
+    OfferDataProvider,
+    Network
   ]
 })
 export class AppModule {}

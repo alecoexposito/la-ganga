@@ -17,6 +17,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="loadOffersFromServer($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-item>
     {{ result }}
   </ion-item>

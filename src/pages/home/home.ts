@@ -65,11 +65,14 @@ export class HomePage {
     return this.categories;
   }
 
-  async loadOffersFromServer() {
+  async loadOffersFromServer(refresher) {
     console.log("network type: ", this.network.type);
     this.offers = await this.offerData.getOffers();
     this.offersFull = this.offers;
     this.storage.set("offers", this.offers);
+    console.log(this.offers);
+    if(refresher != undefined)
+      refresher.complete();
   }
 
   async initializeOffers() {

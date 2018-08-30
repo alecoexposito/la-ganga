@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+
+
 /**
  * Generated class for the QrActionsPage page.
  *
@@ -16,6 +18,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class QrActionsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    // var Offer = Parse.Object.extend("Offer");
+    // let myOffer = new Offer();
+    // myOffer.set("shortDescription", "test2");
+    // myOffer.save(null, {
+    //   success: (offer) => {
+    //     console.log('Offer created with description: ' + offer.shortDescription);
+    //   },
+    //   error: (offer, error) => {
+    //     console.log('Error: ' + error.message.toString());
+    //   }
+    // });
+
   }
 
   ionViewDidLoad() {

@@ -15,9 +15,12 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item><ion-icon name="person"> Perfil</ion-icon></ion-item>
-    <ion-item><ion-icon name="notifications"> Notificaciones</ion-icon></ion-item>
-    <ion-item><ion-icon name="trophy"> Fidelización</ion-icon></ion-item>
-    <ion-item><ion-icon name="settings"> Ajustes</ion-icon></ion-item>
+    <button ion-item (click)="goToProfile()"><ion-icon name="person"></ion-icon> Perfil</button>
+    <button ion-item (click)="goToNotifications()"><ion-icon name="notifications"></ion-icon> Notificaciones</button>
+    <button ion-item (click)="goToFidelization()"><ion-icon name="trophy"></ion-icon> Fidelización</button>
+    <button ion-item (click)="goToSettings()">
+      <ion-icon name="settings"></ion-icon>
+        Ajustes
+    </button>
   </ion-list>
 </ion-content>

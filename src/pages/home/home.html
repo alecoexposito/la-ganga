@@ -21,14 +21,14 @@
     {{ result }}
   </ion-item>
   <ion-card *ngFor="let offer of getOffers()">
-    <img [src]="offer.image" (click)="offerImageClick(offer)" />
+    <img [src]="offer.business.mainImage._url" (click)="offerImageClick(offer)" />
     <!--<ion-card-title color="primary">{{ offer.business.name }}</ion-card-title>-->
     <ion-card-header color="dark" style="padding-bottom: 0px">
       <p><strong> {{ offer.business.name }} </strong></p>
     </ion-card-header>
     <ion-card-content color="dark" class="card-offer-item">
       <ion-item no-padding>
-        <p>{{ offer.title }}</p>
+        <p>{{ offer.shortDescription }}</p>
         <p>{{ offer.description }}</p>
       </ion-item>
       <!--<ion-item no-padding>{{ offer.description }}</ion-item>-->

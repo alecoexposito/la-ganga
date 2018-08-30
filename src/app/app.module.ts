@@ -16,6 +16,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {OfferDetailPage} from "../pages/offer-detail/offer-detail";
 import {MapPage} from "../pages/map/map";
 import {MiscPage} from "../pages/misc/misc";
+import {SettingsPage} from "../pages/settings/settings";
+import {ProfilePage} from "../pages/profile/profile";
+import {NotificationsPage} from "../pages/notifications/notifications";
+import {FidelizationPage} from "../pages/fidelization/fidelization";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -27,12 +32,17 @@ import {MiscPage} from "../pages/misc/misc";
     QrActionsPage,
     OfferDetailPage,
     MapPage,
-    MiscPage
+    MiscPage,
+    SettingsPage,
+    ProfilePage,
+    NotificationsPage,
+    FidelizationPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +54,11 @@ import {MiscPage} from "../pages/misc/misc";
     QrActionsPage,
     OfferDetailPage,
     MapPage,
-    MiscPage
+    MiscPage,
+    SettingsPage,
+    ProfilePage,
+    NotificationsPage,
+    FidelizationPage
   ],
   providers: [
     StatusBar,

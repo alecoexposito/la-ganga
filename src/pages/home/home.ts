@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
 import {OfferDataProvider} from "../../providers/offer-data/offer-data";
 import {OfferDetailPage} from "../offer-detail/offer-detail";
-import {Observable} from "rxjs/Observable";
-import Parse from "parse";
+import Parse from 'parse';
+import {Storage} from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -17,8 +17,24 @@ export class HomePage {
 
   offers: any;
   offersFull: any;
-  constructor(public navCtrl: NavController, public offerData: OfferDataProvider, public platform: Platform) {
+
+  constructor(public navCtrl: NavController, public offerData: OfferDataProvider, public platform: Platform, public storage: Storage) {
     this.initializeOffers();
+    this.storage.ready().then(() => {
+      console.log("storage is ready");
+    });
+
+
+    this.storage.set("testingKey", "testingValue");
+    this.storage.set("testingKeyArray", [1, 2, 3, 4, 5]);
+    this.storage.set("arrayObjs", [{
+      name: 'Lola',
+      age: 23
+    }, {
+      name: 'Rodrigo',
+      age: 12
+    }]);
+
     // Parse.initialize("RhgXYxP8GV1xL3d1Om8AbnLghm7aGI8ljIFbNIBu", "PKlHvUIxEOOCpHwzspNzqE9Ci3Fh5BQIJnMR73cG");
     // Parse.serverURL = 'https://parseapi.back4app.com/';
     //
@@ -49,25 +65,33 @@ export class HomePage {
     return this.categories;
   }
 
-  initializeOffers() {
-    this.offerData.getOffers()
-      .then(data => {
-        console.log("offers full", this.offersFull);
-        if(this.offersFull != undefined) {
-          this.offers = this.offersFull;
-        }else {
-          if(data.offers != undefined) {
-            this.offers = data.offers;
-            this.offersFull = data.offers;
-          }
-        }
-        console.log(this.offers);
-      });
+  async initializeOffers() {
+    if (this.offersFull != undefined) {
+      this.offers = this.offersFull;
+    } else {
+      this.offers = await this.offerData.getOffers();
+      this.offersFull = this.offers;
+    }
 
-      // this.offerData.getOffers().subscribe(data => {
-      //   console.log("data", data);
-      //   this.offers = data;
-      // });
+
+    // this.offerData.getOffers()
+    //   .then(data => {
+    //     console.log("offers full", this.offersFull);
+    //     if(this.offersFull != undefined) {
+    //       this.offers = this.offersFull;
+    //     }else {
+    //       if(data.offers != undefined) {
+    //         this.offers = data.offers;
+    //         this.offersFull = data.offers;
+    //       }
+    //     }
+    //     console.log(this.offers);
+    //   });
+
+    // this.offerData.getOffers().subscribe(data => {
+    //   console.log("data", data);
+    //   this.offers = data;
+    // });
   }
 
   getOffers() {
@@ -75,7 +99,7 @@ export class HomePage {
   }
 
   filterOffers(ev: any) {
-    if(this.offers.length == 0)
+    if (this.offers.length == 0)
       return;
     // Reset items back to all of the items
     this.offers = this.offersFull;
@@ -87,7 +111,7 @@ export class HomePage {
     if (val && val.trim() != '') {
       this.offers = this.offers.filter((item) => {
         console.log("item", item);
-        if(item.business == undefined)
+        if (item.business == undefined)
           return true;
         console.log(item);
         let haystack = item.business.name + " " + item.title + " " + item.description;

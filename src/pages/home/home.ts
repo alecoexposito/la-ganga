@@ -71,7 +71,7 @@ export class HomePage {
     this.offersFull = this.offers;
     this.storage.set("offers", this.offers);
     console.log(this.offers);
-    if(refresher != undefined)
+    if(refresher != null && refresher != undefined)
       refresher.complete();
   }
 
@@ -79,7 +79,7 @@ export class HomePage {
     if (this.offersFull != undefined) {
       this.offers = this.offersFull;
     } else {
-      this.loadOffersFromServer();
+      this.loadOffersFromServer(null);
     }
 
 

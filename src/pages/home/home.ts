@@ -139,7 +139,9 @@ export class HomePage {
   }
 
   private loadOffersFromStorage() {
-    this.offers = this.storage.get("offers");
-    this.offersFull = this.offers;
+    this.offers = this.storage.get("offers").then(result => {
+      this.offers = result;
+      this.offersFull = this.offers;
+    });
   }
 }

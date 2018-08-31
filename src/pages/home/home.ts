@@ -66,9 +66,13 @@ export class HomePage {
   }
 
   async loadOffersFromServer(refresher) {
-    this.offers = await this.offerData.getOffers();
-    this.offersFull = this.offers;
-    this.storage.set("offers", this.offers);
+    if(this.network.type == 'none') {
+      this.loadOffersFromStorage();
+    } else {
+      this.offers = await this.offerData.getOffers();
+      this.offersFull = this.offers;
+      this.storage.set("offers", this.offers);
+    }
     console.log(this.offers);
     if(refresher != null && refresher != undefined)
       refresher.complete();
@@ -135,7 +139,7 @@ export class HomePage {
   }
 
   private loadOffersFromStorage() {
-    this.offers = this.storage.get('offers');
+    this.offers = this.storage.get("offers");
     this.offersFull = this.offers;
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the NotificationsPage page.
@@ -15,11 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NotificationsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationsPage');
+    this.storage.get("offers").then(result => {
+      console.log(result);
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Storage} from "@ionic/storage";
 
 /**
@@ -16,15 +16,27 @@ import {Storage} from "@ionic/storage";
 })
 export class NotificationsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  offers: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationsPage');
     this.storage.get("offers").then(result => {
+      this.offers = result;
       console.log(result);
     });
+  }
+
+  testButton() {
+    let alert = this.alertCtrl.create({
+      title: 'Test',
+      message: JSON.stringify(this.offers),
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
 }

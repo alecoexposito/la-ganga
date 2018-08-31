@@ -66,7 +66,6 @@ export class HomePage {
   }
 
   async loadOffersFromServer(refresher) {
-    console.log("network type: ", this.network.type);
     this.offers = await this.offerData.getOffers();
     this.offersFull = this.offers;
     this.storage.set("offers", this.offers);
@@ -78,8 +77,10 @@ export class HomePage {
   async initializeOffers() {
     if (this.offersFull != undefined) {
       this.offers = this.offersFull;
+    } else if(this.network.type != 'none'){
+        this.loadOffersFromServer(null);
     } else {
-      this.loadOffersFromServer(null);
+        this.loadOffersFromStorage();
     }
 
 
@@ -131,5 +132,10 @@ export class HomePage {
       })
     }
 
+  }
+
+  private loadOffersFromStorage() {
+    this.offers = this.storage.get('offers');
+    this.offersFull = this.offers;
   }
 }

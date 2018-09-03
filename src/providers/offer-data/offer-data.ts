@@ -21,6 +21,8 @@ export class OfferDataProvider {
 
   async getOffers() {
 
+    console.log("llamando al get offers");
+
     Parse.initialize("RhgXYxP8GV1xL3d1Om8AbnLghm7aGI8ljIFbNIBu", "PKlHvUIxEOOCpHwzspNzqE9Ci3Fh5BQIJnMR73cG");
     Parse.serverURL = 'https://parseapi.back4app.com/';
     let offers = [];

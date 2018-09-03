@@ -19,9 +19,10 @@ export class HomePage {
   offersFull: any;
 
   constructor(public navCtrl: NavController, public offerData: OfferDataProvider, public platform: Platform, public storage: Storage, private network: Network) {
-    this.initializeOffers();
+    this.offers = [];
     this.storage.ready().then(() => {
       console.log("storage is ready");
+      this.initializeOffers();
     });
 
 
@@ -66,7 +67,9 @@ export class HomePage {
   }
 
   async loadOffersFromServer(refresher) {
-    if(this.network.type == 'none') {
+    console.log("tipo de red", this.network.type);
+    if(this.network.type == 'none' || this.network.type == null) {
+      console.log("dentro del if de la red");
       this.loadOffersFromStorage();
     } else {
       this.offers = await this.offerData.getOffers();
@@ -81,10 +84,8 @@ export class HomePage {
   async initializeOffers() {
     if (this.offersFull != undefined) {
       this.offers = this.offersFull;
-    } else if(this.network.type != 'none'){
+    } else{
         this.loadOffersFromServer(null);
-    } else {
-        this.loadOffersFromStorage();
     }
 
 
@@ -139,9 +140,10 @@ export class HomePage {
   }
 
   private loadOffersFromStorage() {
-    this.offers = this.storage.get("offers").then(result => {
+    this.storage.get("offers").then(result => {
       this.offers = result;
       this.offersFull = this.offers;
+      console.log("offers from storage: ", this.offers);
     });
   }
 }

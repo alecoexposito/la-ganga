@@ -22,6 +22,7 @@ import {NotificationsPage} from "../pages/notifications/notifications";
 import {FidelizationPage} from "../pages/fidelization/fidelization";
 import {IonicStorageModule} from "@ionic/storage";
 import {Network} from "@ionic-native/network";
+import {QRCodeModule} from "angularx-qrcode";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {Network} from "@ionic-native/network";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    QRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

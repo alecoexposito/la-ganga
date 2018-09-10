@@ -23,6 +23,7 @@ import {FidelizationPage} from "../pages/fidelization/fidelization";
 import {IonicStorageModule} from "@ionic/storage";
 import {Network} from "@ionic-native/network";
 import {QRCodeModule} from "angularx-qrcode";
+import {QRScanner} from "@ionic-native/qr-scanner";
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {QRCodeModule} from "angularx-qrcode";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OfferDataProvider,
-    Network
+    Network,
+    QRScanner
   ]
 })
 export class AppModule {}
